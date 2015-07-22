@@ -11,7 +11,7 @@ describe('Tests', function() {
   });
 });
 
-describe.only('CLI', function() {
+describe('CLI', function() {
 
   it('should print help if help is called', function(done) {
     cp.execFile('./app.js', ['--help'], function(err,stdout) {
