@@ -1,0 +1,8 @@
+cheer
+
+long day at the office?
+need some encouragement?
+
+to get a good cheer, simply type
+
+/.app.js [your-name]

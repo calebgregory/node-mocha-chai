@@ -1,0 +1,26 @@
+{
+  "name": "node-mocha-chai",
+  "version": "1.0.0",
+  "description": "Node, Mocha, Chai learning",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebgregory/node-mocha-chai.git"
+  },
+  "author": "caleb gregory <calebgregory@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calebgregory/node-mocha-chai/issues"
+  },
+  "homepage": "https://github.com/calebgregory/node-mocha-chai#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "minimist": "^1.1.1"
+  }
+}
