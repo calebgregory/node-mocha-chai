@@ -34,14 +34,6 @@ describe('cheer', function() {
     });
   });
 
-  it('should print a cheer if an name is put in', function(done) {
-    cp.execFile('./app.js', ['Abc'], function(err,stdout) {
-      var output = 'Gimme an A!\nGimme a  B!\nGimme a  C!\n';
-      assert.equal(stdout,output);
-      done();
-    });
-  });
-
   it('should print lowercase in uppercase', function(done) {
     cp.execFile('./app.js', ['a'], function(err,stdout) {
       var output = 'Gimme an A!\n';
@@ -57,6 +49,20 @@ describe('cheer', function() {
         cheer.article(char).should.equal('a ');;
       });
     done();
+  });
+
+  it('should return a phrase with the character as a capital', function() {
+    var char = 'a';
+    var output = 'Gimme an A!\n';
+    assert.equal(cheer.phrase(char),output);
+  });
+
+  it('should print a cheer if a name is put in', function(done) {
+    cp.execFile('./app.js', ['Abc'], function(err,stdout) {
+      var output = 'Gimme an A!\nGimme a  B!\nGimme a  C!\n';
+      assert.equal(stdout,output);
+      done();
+    });
   });
 
 });
