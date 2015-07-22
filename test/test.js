@@ -51,11 +51,12 @@ describe('cheer', function() {
   });
 
   it('should have an "a" before a consonant', function(done) {
-    cp.execFile('./app.js', ['d'], function(err,stdout) {
-      var output = 'Gimme a  D!';
-      assert.equal(stdout,output);
-      done();
-    });
+    'BCDGJKPQTUVWYZ'
+      .split('')
+      .forEach(function(char) {
+        cheer.article(char).should.equal('a ');;
+      });
+    done();
   });
 
 });
