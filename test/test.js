@@ -2,7 +2,7 @@ var path = require('path');
 var should = require('chai').should();
 var assert = require('chai').assert;
 var Animal = require(path.join(process.cwd(), '/lib/Animal'));
-var cheer = require(path.join(process.cwd(), '/lib/cheer'));
+var Cheer = require(path.join(process.cwd(), '/lib/cheer'));
 var cp = require('child_process');
 var fs = require('fs');
 
@@ -13,6 +13,8 @@ describe('Tests', function() {
 });
 
 describe('cheer', function() {
+
+  var cheer = new Cheer();
 
   it('should print help if help is called', function(done) {
     cp.execFile('./app.js', ['--help'], function(err,stdout) {
