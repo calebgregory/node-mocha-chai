@@ -2,6 +2,7 @@ var path = require('path');
 var should = require('chai').should();
 var assert = require('chai').assert;
 var Animal = require(path.join(process.cwd(), '/lib/Animal'));
+var cheer = require(path.join(process.cwd(), '/lib/cheer'));
 var cp = require('child_process');
 var fs = require('fs');
 
@@ -11,7 +12,7 @@ describe('Tests', function() {
   });
 });
 
-describe('CLI', function() {
+describe('cheer', function() {
 
   it('should print help if help is called', function(done) {
     cp.execFile('./app.js', ['--help'], function(err,stdout) {
@@ -34,6 +35,14 @@ describe('CLI', function() {
   it('should print a cheer if an name is put in', function(done) {
     cp.execFile('./app.js', ['Abc'], function(err,stdout) {
       var output = 'Gimme an A!\nGimme a  B!\nGimme a  C!\n';
+      assert.equal(stdout,output);
+      done();
+    });
+  });
+
+  it('should print lowercase in uppercase', function(done) {
+    cp.execFile('./app.js', ['a'], function(err,stdout) {
+      var output = 'Gimme an A!\n';
       assert.equal(stdout,output);
       done();
     });
