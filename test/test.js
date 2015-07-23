@@ -2,7 +2,7 @@ var path = require('path');
 var should = require('chai').should();
 var assert = require('chai').assert;
 var Animal = require(path.join(process.cwd(), '/lib/Animal'));
-var Cheer = require(path.join(process.cwd(), '/lib/cheer'));
+var Cheerleader = require(path.join(process.cwd(), '/lib/cheer'));
 var cp = require('child_process');
 var fs = require('fs');
 
@@ -14,7 +14,29 @@ describe('Tests', function() {
 
 describe('cheer', function() {
 
-  var cheer = new Cheer();
+  var cheerleader = new Cheerleader();
+
+  it('should return a phrase with the character as a capital', function() {
+    var char = 'a';
+    assert.equal(cheerleader.upper(char),output);
+  });
+
+  it('should have an "a" before a consonant', function(done) {
+    'BCDGJKPQTUVWYZ'
+      .split('')
+      .forEach(function(char) {
+        cheer.article(char).should.equal('a ');;
+      });
+    done();
+  });
+
+  it('should print a cheer if a name is put in', function(done) {
+    cp.execFile('./app.js', ['Abc'], function(err,stdout) {
+      var output = 'Gimme an A!\nGimme a  B!\nGimme a  C!\n';
+      assert.equal(stdout,output);
+      done();
+    });
+  });
 
   it('should print help if help is called', function(done) {
     cp.execFile('./app.js', ['--help'], function(err,stdout) {
@@ -30,37 +52,6 @@ describe('cheer', function() {
       var options = { encoding : 'utf8' };
       var msg = fs.readFileSync('./lib/help_message.txt',options);
       assert.equal(stdout,msg);
-      done();
-    });
-  });
-
-  it('should print lowercase in uppercase', function(done) {
-    cp.execFile('./app.js', ['a'], function(err,stdout) {
-      var output = 'Gimme an A!\n';
-      assert.equal(stdout,output);
-      done();
-    });
-  });
-
-  it('should have an "a" before a consonant', function(done) {
-    'BCDGJKPQTUVWYZ'
-      .split('')
-      .forEach(function(char) {
-        cheer.article(char).should.equal('a ');;
-      });
-    done();
-  });
-
-  it('should return a phrase with the character as a capital', function() {
-    var char = 'a';
-    var output = 'Gimme an A!\n';
-    assert.equal(cheer.phrase(char),output);
-  });
-
-  it('should print a cheer if a name is put in', function(done) {
-    cp.execFile('./app.js', ['Abc'], function(err,stdout) {
-      var output = 'Gimme an A!\nGimme a  B!\nGimme a  C!\n';
-      assert.equal(stdout,output);
       done();
     });
   });
