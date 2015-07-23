@@ -22,6 +22,12 @@ describe('Cheer App', function() {
         var cheerleader = new Cheerleader(char);
         assert.equal(cheerleader.name,char.toUpperCase());
       });
+
+      it('should join names into one name if there are >1 names in the name', function() {
+        var name = [ 'Grog', 'McGrog' ];
+        var cheerleader = new Cheerleader(name);
+        assert.equal(cheerleader.name,'GROGMCGROG');
+      });
     });
 
     describe('#article()', function() {
@@ -60,6 +66,14 @@ describe('Cheer App', function() {
         var output = "Gimme a  G!\nGimme an R!\nGimme an O!\nGimme a  G!\n";
         var cheerleader = new Cheerleader(name);
         cheerleader.cheer(name).should.equal(output);
+      });
+
+      it('should handle multiple names', function() {
+        var name = ['Grog', 'McGrog'];
+        var output = "Gimme a  G!\nGimme an R!\nGimme an O!\nGimme a  G!\nGimme an M!\nGimme a  C!\nGimme a  G!\nGimme an R!\nGimme an O!\nGimme a  G!\n";
+        var cheerleader = new Cheerleader(name);
+        cheerleader.cheer(name.join('').toUpperCase())
+                          .should.equal(output);
       });
     });
 
