@@ -2,7 +2,7 @@ var path = require('path');
 var should = require('chai').should();
 var assert = require('chai').assert;
 var Animal = require(path.join(process.cwd(), '/lib/Animal'));
-var Cheerleader = require(path.join(process.cwd(), '/lib/cheer'));
+var Cheerleader = require(path.join(process.cwd(), '/lib/cheerleader'));
 var cp = require('child_process');
 var fs = require('fs');
 
