@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 var argv = require('minimist')(process.argv.slice(2));
-var Cheer = require('./lib/cheer');
+var Cheerleader = require('./lib/cheerleader');
 var help = require('./lib/help');
 
 var names = argv._;
 
-var cheer = new Cheer();
+var cheerleader = new Cheerleader();
 
 if(!names.length) {
   help();

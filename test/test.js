@@ -40,6 +40,13 @@ describe('cheer', function() {
     done();
   });
 
+  it('should give a phrase "Gimme a _!" for a letter', function() {
+    var char = 'a';
+    var cheerleader = new Cheerleader(char);
+    cheerleader.phrase(char.toUpperCase())
+      .should.equal('Gimme '+cheerleader.article(char)+' '+char.toUpperCase()+'!\n');
+  });
+
   it('should print help if help is called', function(done) {
     cp.execFile('./app.js', ['--help'], function(err,stdout) {
       var options = { encoding : 'utf8' };
