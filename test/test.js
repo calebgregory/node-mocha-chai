@@ -55,9 +55,11 @@ describe('Cheer App', function() {
     });
 
     describe('#cheer()', function() {
-      it('should give a phrase "Gimme a _!" for every letter in a name', function(done) {
+      it('should give a phrase "Gimme a _!" for every letter in a name', function() {
         var name = "Grog";
+        var output = "Gimme a  G!\nGimme an R!\nGimme an O!\nGimme a  G!\n";
         var cheerleader = new Cheerleader(name);
+        cheerleader.cheer(name).should.equal(output);
       });
     });
 
