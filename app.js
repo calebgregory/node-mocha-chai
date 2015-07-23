@@ -6,7 +6,7 @@ var help = require('./lib/help');
 
 var names = argv._;
 
-var cheerleader = new Cheerleader();
+var cheerleader = new Cheerleader(names);
 
 if(!names.length) {
   help();
