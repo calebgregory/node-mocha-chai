@@ -14,18 +14,18 @@ describe('Tests', function() {
 
 describe('cheer', function() {
 
-  var cheerleader = new Cheerleader();
-
   it('should return a phrase with the character as a capital', function() {
     var char = 'a';
-    assert.equal(cheerleader.upper(char),output);
+    var cheerleader = new Cheerleader(char);
+    assert.equal(cheerleader.name,char.toUpperCase());
   });
 
   it('should have an "a" before a consonant', function(done) {
     'BCDGJKPQTUVWYZ'
       .split('')
       .forEach(function(char) {
-        cheer.article(char).should.equal('a ');;
+        var cheerleader = new Cheerleader(char);
+        cheerleader.article(char).should.equal('a ');;
       });
     done();
   });
