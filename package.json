@@ -4,7 +4,9 @@
   "description": "Node, Mocha, Chai learning",
   "main": "app.js",
   "scripts": {
-    "test": "istanbul cover _mocha",
+    "test": "mocha --recursive test/unit",
+    "test-integration": "mocha --recursive test/integration",
+    "test-cov": "istanbul cover _mocha -- --recursive",
     "codeclimate-coverage": "codeclimate-test-reporter < ./coverage/lcov.info"
   },
   "repository": {

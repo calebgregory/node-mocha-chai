@@ -1,10 +1,10 @@
-var path = require('path');
 var should = require('chai').should();
 var assert = require('chai').assert;
-var Animal = require(path.join(process.cwd(), '/lib/Animal'));
-var Cheerleader = require(path.join(process.cwd(), '/lib/cheerleader'));
+var path = require('path');
 var cp = require('child_process');
 var fs = require('fs');
+var Animal = require(path.join(process.cwd(), '/lib/Animal'));
+var Cheerleader = require(path.join(process.cwd(), '/lib/cheerleader'));
 
 describe('Tests', function() {
   it('truthyness', function() {
@@ -95,6 +95,14 @@ describe('Cheer App', function() {
   //  });
   //});
 
+  });
+
+});
+
+describe('CLI', function() {
+  var thanks = require(path.join(process.cwd(), '/lib/thanks'));
+  it('should thank me for downloading', function() {
+    thanks.should.equal('Thanks for downloading my app!\n');
   });
 
 });
