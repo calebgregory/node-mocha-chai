@@ -30,12 +30,14 @@ describe('cheer', function() {
     done();
   });
 
-  it('should print a cheer if a name is put in', function(done) {
-    cp.execFile('./app.js', ['Abc'], function(err,stdout) {
-      var output = 'Gimme an A!\nGimme a  B!\nGimme a  C!\n';
-      assert.equal(stdout,output);
-      done();
-    });
+  it('should give vowel sounds an article "an" before them', function(done) {
+    'AEFHILMNORSX'
+      .split('')
+      .forEach(function(char) {
+        var cheerleader = new Cheerleader(char);
+        cheerleader.article(char).should.equal('an');
+      });
+    done();
   });
 
   it('should print help if help is called', function(done) {
